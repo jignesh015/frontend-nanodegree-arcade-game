@@ -16,7 +16,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    //this.x = this.x * dt;
+    var bugX = this.x;
+    this.x = bugX + 80 * dt;
+    //console.log(this.x);
+    //console.log(dt);
 
 };
 
@@ -44,8 +47,22 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-
+Player.prototype.handleInput = function(key) {
+    moveX = 100;
+    moveY = 75;
+    if(key == 'up' && this.y > 0) {
+        this.y = this.y - moveY;
+    }
+    if(key == 'down' && this.y < 375) {
+        this.y = this.y + moveY;
+        console.log(this.y);
+    }
+    if(key == 'left' && this.x > 0) {
+        this.x = this.x - moveX;
+    }
+    if(key == 'right' && this.x < 400) {
+        this.x = this.x + moveX;
+    }
 };
 
 
@@ -53,7 +70,7 @@ Player.prototype.handleInput = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(0,65), new Enemy(100,145), new Enemy(200,225)];
-var player = new Player(200,410);
+var player = new Player(200,375);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
