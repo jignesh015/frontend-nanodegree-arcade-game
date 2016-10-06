@@ -83,14 +83,21 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        collectGems();
     }
 
-    //Checks for Collisions
+    //This function checks for Collisions.
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             player.collision(enemy.x, enemy.y);
         });
     }
+
+    //This function enables Player to collect gems.
+    function collectGems() {
+        gem.collect(player.x, player.y);
+    }
+
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -162,6 +169,7 @@ var Engine = (function(global) {
             enemy.render();
         });
 
+        gem.render();
         player.render();
     }
 
@@ -182,7 +190,9 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Gem_Green.png',
+        'images/Gem_Blue.png'
     ]);
     Resources.onReady(init);
 
