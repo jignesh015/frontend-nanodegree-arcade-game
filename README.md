@@ -18,4 +18,4 @@ This Classic Arcade Game is made by Jignesh Patel under the Frontend Nanodegree 
 - Every collision will reduce the score by _1 point_ in Level 1 and _5 points_ in Level 2.
 - Collect gems on the way.
 - Level 1 has **Blue Gems** which give _3 points_ .
-- Level 2 unlocks **Green Gems** which give _5 points_ .
+- Level 2 unlocks **Green Gems** which give _5 points_ in Level 2.
