@@ -28,7 +28,6 @@ var Engine = (function(global) {
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
-
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -39,24 +38,27 @@ var Engine = (function(global) {
          * would be the same for everyone (regardless of how fast their
          * computer is) - hurray time!
          */
+       
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-        update(dt);
+        
         render();
+        update(dt);
+        
+        /* Use the browser's requestAnimationFrame function to call this
+        * function again as soon as the browser is able to draw another frame.
+        */
+        win.requestAnimationFrame(main);
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
         lastTime = now;
 
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
-         */
-        win.requestAnimationFrame(main);
     }
 
     /* This function does some initial setup that should only occur once,
@@ -137,6 +139,9 @@ var Engine = (function(global) {
         }
 
         renderEntities();
+
+        //Call this to update the Player score
+        player.score();
     }
 
     /* This function is called by the render function and is called on each game
