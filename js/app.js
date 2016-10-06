@@ -22,7 +22,7 @@ Enemy.prototype.update = function(dt) {
         
         //Enemy movement
         if(bugX < 550) {
-        this.x = bugX + 200 * dt;
+        this.x = bugX + 190 * dt;
         }
 };
 
@@ -53,14 +53,14 @@ Player.prototype.update = function() {
 };
 var counter = 0;
 
-//Score counter. Score updates when Player wins.
+//Score counter. Score increases by 3pts when Player wins.
 Player.prototype.score = function() {
     ctx.fillStyle = "white";
     ctx.font = "16px impact";
     ctx.textAlign = "right";
     
     if(this.y == 0) {
-        counter++;
+        counter+=3;
     }
     var Score = "Score: " + " " + counter;
     ctx.fillText(Score, 470,100);
@@ -71,6 +71,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//Handles input by moving the player
 Player.prototype.handleInput = function(key) {
     moveX = 100;
     moveY = 75;
@@ -92,11 +93,30 @@ Player.prototype.handleInput = function(key) {
     }
 };
 
+//Collision Detection
+Player.prototype.collision = function(x, y) {
+    bugX = x;
+    bugY = y;
+    bugWidth = 70;
+    bugHeight = 40;
+    playerWidth = 60;
+    playerHeight = 65;
+    if (this.x < bugX + bugWidth && 
+        this.x + playerWidth > bugX &&
+        this.y < bugY + bugHeight &&
+        this.y + playerHeight > bugY) 
+    {
+        //Player goes to initial position after collision. Score reduces by 1pt.
+        this.y = 375;
+        counter--;
+    }
+};
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [new Enemy(250,65), new Enemy(100,145), new Enemy(200,225), new Enemy(400,145)];
+var allEnemies = [new Enemy(50,65), new Enemy(120,145), new Enemy(280,225), new Enemy(430,145)];
 var player = new Player(200,375);
 
 // This listens for key presses and sends the keys to your
