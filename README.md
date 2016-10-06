@@ -1,6 +1,21 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This Classic Arcade Game is made by Jignesh Patel under the Frontend Nanodegree Course by Udacity.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## To play this game:
+1. Open _index.html_ file.
+2. Use arrow keys to move your Player.
+
+## Levels of Game:
+- This game has *2 Levels*.
+- Game will be updated from Level 1 to Level 2 after earning _25 points_
+
+## Rules for the game:
+- The goal is to reach the water.
+- On reaching the water, score will be updated by _3 points_ .
+- Avoid colliding with the Bugs.
+- Every collision will reduce the score by _1 point_ in Level 1 and _5 points_ in Level 2.
+- Collect gems on the way.
+- Level 1 has **Blue Gems** which give _3 points_ .
+- Level 2 unlocks **Green Gems** which give _5 points_ .
